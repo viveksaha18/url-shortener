@@ -12,3 +12,6 @@ class UserResponse(BaseModel):
 class UserLogin(BaseModel):
     email: str
     password: str
+
+class URLCreate(BaseModel):
+    url: str
