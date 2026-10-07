@@ -15,3 +15,11 @@ class UserLogin(BaseModel):
 
 class URLCreate(BaseModel):
     url: str
+
+class MessageResponse(BaseModel):
+    message: str
+
+
+class VerifyEmailRequest(BaseModel):
+    email: str
+    otp: str

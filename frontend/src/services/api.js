@@ -19,6 +19,7 @@ async function request(path, options = {}) {
 
 export const api = {
   register: (email, password) => request('/register', { method: 'POST', body: JSON.stringify({ email, password }) }),
+  verifyRegistration: (email, otp) => request('/register/verify', { method: 'POST', body: JSON.stringify({ email, otp }) }),
   login: (email, password) => request('/login', { method: 'POST', body: JSON.stringify({ email, password }) }),
   profile: (token) => request('/profile', { headers: { Authorization: `Bearer ${token}` } }),
   shorten: (url, token) => request('/url', {

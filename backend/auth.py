@@ -1,14 +1,19 @@
+
 from passlib.context import CryptContext
-import os
 from dotenv import load_dotenv
 from jose import jwt
+import os
+import secrets
 
 load_dotenv()
 
+
+# JWT Configuration
 ALGORITHM = "HS256"
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 
+# JWT: Create Access Token
 def create_access_token(user_id: int):
     payload = {
         "user_id": user_id
@@ -23,6 +28,7 @@ def create_access_token(user_id: int):
     return token
 
 
+# JWT: Verify Access Token
 def verify_access_token(token: str):
     try:
         payload = jwt.decode(
@@ -42,8 +48,9 @@ def verify_access_token(token: str):
         return None
 
 
+# Password & OTP Hashing
 pwd_context = CryptContext(
-    schemes=["bcrypt"],
+    schemes=["argon2"],
     deprecated="auto"
 )
 
@@ -57,3 +64,9 @@ def verify_password(plain_password: str, hashed_password: str):
         plain_password,
         hashed_password
     )
+
+
+# OTP Generation
+def generate_otp():
+    return str(secrets.randbelow(900000) + 100000)
+
