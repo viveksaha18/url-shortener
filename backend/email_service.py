@@ -6,7 +6,7 @@ resend.api_key = os.getenv("RESEND_API_KEY")
 def send_otp_email(to_email: str, otp: str):
 
     params = {
-        "from": "onboarding@resend.dev",
+        "from": "urlstack.in",
         "to": [to_email],
         "subject": "Verify your email - URL Shortener",
         "html": f"""
